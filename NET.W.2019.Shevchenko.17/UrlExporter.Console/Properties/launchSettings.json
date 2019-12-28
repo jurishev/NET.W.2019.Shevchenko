@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "UrlParser": {
+      "commandName": "Project",
+      "commandLineArgs": "urls.txt result.xml"
+    }
+  }
+}

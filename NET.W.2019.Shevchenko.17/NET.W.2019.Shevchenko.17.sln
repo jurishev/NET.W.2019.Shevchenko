@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UrlExporter.Console", "UrlExporter.Console\UrlExporter.Console.csproj", "{1E6735DD-4EED-4D36-AF15-DC17239B36F5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UrlExporter.Library", "UrlExporter.Library\UrlExporter.Library.csproj", "{C0713F49-BAF1-488E-922B-376680C17AA5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E6735DD-4EED-4D36-AF15-DC17239B36F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E6735DD-4EED-4D36-AF15-DC17239B36F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E6735DD-4EED-4D36-AF15-DC17239B36F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E6735DD-4EED-4D36-AF15-DC17239B36F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0713F49-BAF1-488E-922B-376680C17AA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0713F49-BAF1-488E-922B-376680C17AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0713F49-BAF1-488E-922B-376680C17AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0713F49-BAF1-488E-922B-376680C17AA5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BAF11CEA-CFDB-4619-81E7-36F91516DB39}
+	EndGlobalSection
+EndGlobal

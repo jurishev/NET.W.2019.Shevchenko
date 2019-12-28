@@ -26,7 +26,7 @@
 
             try
             {
-                var document = UrlToXml.GetXmlDocument(new UrlProvider(File.ReadAllLines(inputFileName)), out var badLines);
+                var document = UrlToXml.GetXmlDocument(File.ReadAllLines(inputFileName), out var badLines);
                 document.Save(outputFileName);
 
                 if (badLines != null)

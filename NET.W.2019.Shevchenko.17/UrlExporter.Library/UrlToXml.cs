@@ -13,10 +13,10 @@
         /// <summary>
         /// Converts an URL string collection to an X-DOM document.
         /// </summary>
-        /// <param name="source">URL provider.</param>
-        /// <param name="wrongUrl">Array of URL strings with wrong pattern.</param>
+        /// <param name="source">URL strings.</param>
+        /// <param name="wrongUrl">Wrong URL pattern strings.</param>
         /// <returns>X-DOM document.</returns>
-        public static XDocument GetXmlDocument(IUrlSource source, out string[] wrongUrl)
+        public static XDocument GetXmlDocument(string[] source, out string[] wrongUrl)
         {
             if (source is null)
             {
@@ -26,7 +26,7 @@
             var list = new List<string>();
             var root = new XElement("urlAddresses");
 
-            foreach (var item in source.GetUrl())
+            foreach (var item in source)
             {
                 if (UrlToXml.TryParseUrl(item, out var element))
                 {

@@ -52,8 +52,16 @@
                 throw new ArgumentNullException(nameof(generator));
             }
 
-            var account = new AccountRepresentation(generator.GenerateGuidId(), grade, owner, 0, 0);
-            this.repository.AddRecord(AccountService.GenerateDto(account));
+            var dto = new AccountDto()
+            {
+                Id = generator.GenerateGuidId(),
+                Type = (int)grade,
+                Owner = owner,
+                Balance = 0,
+                Bonus = 0,
+            };
+
+            this.repository.AddRecord(dto);
         }
 
         /// <inheritdoc/>
@@ -97,12 +105,7 @@
         {
             var dto = this.repository.GetRecord(id);
 
-            return new AccountRepresentation(
-                dto.Id,
-                (AccountGrade)dto.Type,
-                dto.Owner,
-                dto.Balance,
-                dto.Bonus);
+            return AccountService.RepresentAccount(dto);
         }
 
         /// <inheritdoc/>
@@ -112,23 +115,6 @@
             {
                 yield return AccountService.RepresentAccount(dto);
             }
-        }
-
-        private static IAccountDto GenerateDto(AccountRepresentation account)
-        {
-            if (account is null)
-            {
-                throw new ArgumentNullException(nameof(account));
-            }
-
-            return new AccountDto()
-            {
-                Id = account.Id,
-                Type = (int)account.Grade,
-                Owner = account.Owner,
-                Balance = account.Balance,
-                Bonus = account.Bonus,
-            };
         }
 
         private static AccountRepresentation RepresentAccount(IAccountDto dto)

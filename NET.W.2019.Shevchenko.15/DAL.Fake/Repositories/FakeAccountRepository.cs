@@ -8,14 +8,14 @@
     /// <inheritdoc/>
     public class FakeAccountRepository : IAccountRepository
     {
-        private readonly Dictionary<Guid, FakeAccountDto> storage;
+        private readonly Dictionary<Guid, IAccountDto> storage;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FakeAccountRepository"/> class.
         /// </summary>
         public FakeAccountRepository()
         {
-            this.storage = new Dictionary<Guid, FakeAccountDto>();
+            this.storage = new Dictionary<Guid, IAccountDto>();
         }
 
         /// <inheritdoc/>
@@ -31,16 +31,7 @@
                 throw new ArgumentException($"ID '{dto.Id}' already exists.");
             }
 
-            var data = new FakeAccountDto()
-            {
-                Id = dto.Id,
-                Type = dto.Type,
-                Owner = dto.Owner,
-                Balance = dto.Balance,
-                Bonus = dto.Bonus,
-            };
-
-            this.storage.Add(data.Id, data);
+            this.storage.Add(dto.Id, dto);
         }
 
         /// <inheritdoc/>
@@ -94,17 +85,8 @@
                 throw new ArgumentException($"No such ID: '{dto.Id}'.");
             }
 
-            var data = new FakeAccountDto()
-            {
-                Id = dto.Id,
-                Type = dto.Type,
-                Owner = dto.Owner,
-                Balance = dto.Balance,
-                Bonus = dto.Bonus,
-            };
-
             this.storage.Remove(dto.Id);
-            this.storage.Add(data.Id, data);
+            this.storage.Add(dto.Id, dto);
         }
     }
 }

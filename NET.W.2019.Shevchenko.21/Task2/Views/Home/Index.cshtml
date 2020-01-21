@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Task2.Models.Image>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/Gallery.css")" rel="stylesheet" type="text/css" />
+}
+
+<!-- Container for the image gallery -->
+<div class="container">
+
+    <!-- Full-width images with number text -->
+    @{
+        var index = 1;
+        var max = Model.Count();
+
+        foreach (var item in Model)
+        {
+            <div class="mySlides">
+                <div class="numbertext">@index / @max</div>
+                <img src=@item.WideUrl style="width:100%" title="@item.Info" alt="@item.Info">
+            </div>
+
+            index++;
+        }
+    }
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <!-- Image text -->
+    <div class="caption-container">
+        <p id="caption"></p>
+    </div>
+
+    <!-- Thumbnail images -->
+    <div class="row">
+
+        @{
+            index = 1;
+
+            foreach (var item in Model)
+            {
+                <div class="column">
+                    <img class="demo cursor" src=@item.ThumbUrl style="width:100%" onclick="currentSlide(@index)" title="@item.Info" alt="@item.Info">
+                </div>
+
+                index++;
+            }
+        }
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+
+</script>
